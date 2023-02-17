@@ -1,0 +1,6 @@
+app
+numpy
+tensorflow
+tensorflow_text
+interpreter
+streamlit
