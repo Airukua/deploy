@@ -9,7 +9,7 @@ import streamlit as st
 st.set_page_config(page_title="Sigma Ai | Aplikasi Penerjemah Bahasa Geser", page_icon="🤖")
 st.title("Demo NMT Indonesia|Geser")
 
-interpreter = tf.lite.Interpreter('/content/converted_model.tflite')
+interpreter = tf.lite.Interpreter('converted_model.tflite')
 interpreter.allocate_tensors()
 
     
