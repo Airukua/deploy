@@ -1,6 +1,0 @@
-tensorflow tensorflow_text
-tensorflow
-streamlit
-numpy
-absl-py
-streamlit
