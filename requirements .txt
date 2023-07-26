@@ -1,5 +1,6 @@
-tensorflow-text==2.11.0
-tensorflow==2.11.0
-streamlit==1.18.1
-numpy==1.24.2
-
+tensorflow tensorflow_text
+tensorflow
+streamlit
+numpy
+absl-py
+streamlit
