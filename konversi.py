@@ -1,3 +1,6 @@
+#import tensorflow text
+#import tensorflow
+#latih model
 #simpan model NMT
 tf.saved_model.save(export, 'dynamic_translator',
                     signatures={'serving_default': export.translate})
