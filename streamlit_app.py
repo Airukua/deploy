@@ -52,6 +52,6 @@ st.header("Researchers:")
 for researcher in researchers:
     st.write("- " + researcher)
 
-# Display Geser language discussion
+# Display Geser language discussion with left-right alignment
 st.header("Bahasa Geser:")
-st.write(geser_language_discussion)
+st.text(geser_language_discussion, unsafe_allow_html=True, key="geser_text")
