@@ -54,4 +54,4 @@ for researcher in researchers:
 
 # Display Geser language discussion with left-right alignment
 st.header("Bahasa Geser:")
-st.text(geser_language_discussion, unsafe_allow_html=True, key="geser_text")
+st.text(geser_language_discussion)
