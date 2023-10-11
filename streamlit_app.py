@@ -34,18 +34,22 @@ def translate(user_input):
     input_data = np.array([user_input], dtype=np.str)
     return input_data
 
+# Fungsi untuk menerjemahkan teks dan menampilkan hasil
+def translate_and_display(user_input):
+    input_data = translate(user_input)
+    interpreter.set_tensor(input_details[0]['index'], input_data)
+    interpreter.invoke()
+    output_data = interpreter.get_tensor(output_details[0]['index'])
+    st.info(output_data)
+
 # Form to add your items
 with st.form("my_form"):
     user_input = st.text_area("Masukan Kata...", max_chars=200)
 
-    # Run the model
-    if st.form_submit_button("Translate"):
-        st.write("Hasil Terjemahan")
-        input_data = translate(user_input)
-        interpreter.set_tensor(input_details[0]['index'], input_data)
-        interpreter.invoke()
-        output_data = interpreter.get_tensor(output_details[0]['index'])
-        st.info(output_data)
+# Event handling saat teks berubah
+if user_input:
+    st.write("Hasil Terjemahan")
+    translate_and_display(user_input)
 
 # Display researchers' information
 st.header("Researchers:")
@@ -55,4 +59,4 @@ for researcher in researchers:
 # Display Geser language discussion with left-right alignment
 st.header("Bahasa Geser:")
 st.text(geser_language_discussion)
-
+    
