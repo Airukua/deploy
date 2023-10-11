@@ -15,7 +15,8 @@ researchers = [
 
 # Geser language discussion
 geser_language_discussion = """
-... (potongan kode sebelumnya)
+Bahasa Seram(Geser) adalah salah satu bahasa yang dituturkan oleh masyarakat di Kepulauan Geser yang merupakan salah satu daerah di Kabupaten Seram Bagian Timur (SBT), Provinsi Maluku. Menurut Ethnologue (edisi ke-18, 2015) : Bahasa geser berasal dari rumpun bahasa Austronesia, yang di kelompokan sebagai rumpun bahasa Melayu-Polinesia Inti, kemudian di kelompokan lagi dalam rumpun bahasa Maluku Tengah atau lebih spesifik lagi ke dalam rumpun bahasa Maluku Tengah Timur. Pada tahun 1989 jumlah penutur dari bahasa geser adalah 36.500 penutur.
+Bahasa geser di golongkan oleh Kantor Bahasa Provinsi Maluku sebagai bahasa yang terancam punah, ini di karenakan bahasa tersebut tidak di pakai sebagai sarana komunikasi utama. Bahasa geser tidak digunakan di ranah pemerintahan, sekolah, atau bahkan keluarga. Menurut pakar bahasa, keadaan ini akan membuat Bahasa Geser mengalami perubahan sedikit demi sedikit hingga akhirnya punah (Khairiyah, 2017).
 """
 
 st.set_page_config(page_title="Sigma Ai | Aplikasi Penerjemah Bahasa Geser", page_icon="🤖")
@@ -33,22 +34,18 @@ def translate(user_input):
     input_data = np.array([user_input], dtype=np.str)
     return input_data
 
-# Initialize translation result
-translated_result = ""
-
 # Form to add your items
 with st.form("my_form"):
     user_input = st.text_area("Masukan Kata...", max_chars=200)
 
-# Display the translation result while typing
-    if user_input:
+    # Run the model
+    if st.form_submit_button("Translate"):
+        st.write("Hasil Terjemahan")
         input_data = translate(user_input)
         interpreter.set_tensor(input_details[0]['index'], input_data)
         interpreter.invoke()
         output_data = interpreter.get_tensor(output_details[0]['index'])
-        translated_result = output_data[0][0]
-        st.write("Hasil Terjemahan")
-        st.info(translated_result)
+        st.info(output_data)
 
 # Display researchers' information
 st.header("Researchers:")
@@ -58,4 +55,3 @@ for researcher in researchers:
 # Display Geser language discussion with left-right alignment
 st.header("Bahasa Geser:")
 st.text(geser_language_discussion)
-        
